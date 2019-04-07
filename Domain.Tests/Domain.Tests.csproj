@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Song.Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Helper.Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
