@@ -92,5 +92,14 @@ namespace Domain.Tests
             Assert.Equal(expected, inList.Compact());
 
         }
+
+        [Fact]
+        public void ShouldReturnTheLastNElementsOfAGivenList()
+        {
+
+            Assert.Equal(new List<int> { 3, 4 }, new List<int> { 1, 2, 3, 4 }.Last(2));
+            Assert.Equal(new List<string> { "a", "b", "c" }, new List<string> { "a", "b", "c" }.Last(3));
+            Assert.Equal(new List<string> { "a", "b", "c" }, new List<string> { "a", "b", "c" }.Last(4));
+        }
     }
 }

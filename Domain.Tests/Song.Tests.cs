@@ -80,16 +80,11 @@ She died, of course!
         [Fact]
         public void ShouldReturnListOfPreditorsAndPrey()
         {
-            List<Critter> critters = new List<Critter>{
-                new Critter {Name = "A", Epithet = "" },
-                new Critter {Name = "B", Epithet = "" },
-                new Critter {Name = "C", Epithet = "" }
-            };
 
-            string expected = "She swallowed the A to catch the B.\r\n" +
-                "She swallowed the B to catch the C.";
+            string expected = "She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\r\n" +
+                "She swallowed the spider to catch the fly.";
 
-            Assert.Equal(expected, Song.Chain(critters));
+            Assert.Equal(expected, Song.Chain(3));
         }
     }
 

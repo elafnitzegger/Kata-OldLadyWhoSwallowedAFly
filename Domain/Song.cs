@@ -25,12 +25,12 @@ namespace Domain
             Critter preditor = pair[0];
             Critter prey = pair[1];
 
-            return string.Format("She swallowed the {0} to catch the {1}.", preditor.Name, new List<string> { prey.Name, prey.Epithet }.Compact().Join(" "));
+            return string.Format("She swallowed the {0} to catch the {1}.", preditor.Name, prey.EmbellishedName);
         };
 
-        public static Func<List<Critter>, string> Chain = (critters) =>
+        public static Func<int, string> Chain = (i) =>
         {
-            return critters.EachCons(2).Map(Motivation).Join("\r\n");
+            return critters.Last(i).EachCons(2).Map(Motivation).Join("\r\n");
         };
 
         public static Func<int, string> Verse = (i) =>

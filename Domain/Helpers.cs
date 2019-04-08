@@ -53,5 +53,11 @@ namespace Domain
             }
             return outList;
         }
+
+        public static List<T> Last<T>(this List<T> inList, int endCount)
+        {
+            int count = endCount > inList.Count ? inList.Count : endCount;
+            return inList.GetRange(inList.Count - count, count);
+        }
     }
 }
