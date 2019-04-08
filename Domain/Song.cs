@@ -8,6 +8,31 @@ namespace Domain
 {
     public class Song
     {
+        public static List<Critter> critters = new List<Critter>
+        {
+            new Critter {Name = "horse", Epithet = ""},
+            new Critter {Name = "cow", Epithet = ""},
+            new Critter {Name = "goat", Epithet = ""},
+            new Critter {Name = "dog", Epithet = ""},
+            new Critter {Name = "cat", Epithet = ""},
+            new Critter {Name = "bird", Epithet = ""},
+            new Critter {Name = "spider", Epithet = "that wriggled and jiggled and tickled inside her"},
+            new Critter {Name = "fly", Epithet = ""}
+        };
+
+        public static Func<List<Critter>, string> Motivation = (pair) =>
+        {
+            Critter preditor = pair[0];
+            Critter prey = pair[1];
+
+            return string.Format("She swallowed the {0} to catch the {1}.", preditor.Name, new List<string> { prey.Name, prey.Epithet }.Compact().Join(" "));
+        };
+
+        public static Func<List<Critter>, string> Chain = (critters) =>
+        {
+            return critters.EachCons(2).Map(Motivation).Join("\r\n");
+        };
+
         public static Func<int, string> Verse = (i) =>
         {
             switch (i)

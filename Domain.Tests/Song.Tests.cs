@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Domain.Tests
@@ -63,6 +64,33 @@ She died, of course!
             Assert.Equal(expected, Song.Lyrics());
         }
 
+        [Fact]
+        public void ShouldProvideMotivationString()
+        {
+            var expected = "She swallowed the A to catch the B.";
+
+            List<Critter> pair = new List<Critter>{
+                new Critter {Name = "A", Epithet = "" },
+                new Critter {Name = "B", Epithet = "" }
+            };
+
+            Assert.Equal(expected, Song.Motivation(pair));
+        }
+
+        [Fact]
+        public void ShouldReturnListOfPreditorsAndPrey()
+        {
+            List<Critter> critters = new List<Critter>{
+                new Critter {Name = "A", Epithet = "" },
+                new Critter {Name = "B", Epithet = "" },
+                new Critter {Name = "C", Epithet = "" }
+            };
+
+            string expected = "She swallowed the A to catch the B.\r\n" +
+                "She swallowed the B to catch the C.";
+
+            Assert.Equal(expected, Song.Chain(critters));
+        }
     }
 
 }

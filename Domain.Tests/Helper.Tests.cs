@@ -55,6 +55,42 @@ namespace Domain.Tests
 
             Assert.Equal(expected, list.Join(";;"));
         }
-        
+
+        [Fact]
+        public void ShouldReturnListOfSublist()
+        {
+            List<string> list = new List<string>() { "AA", "BB", "CC", "DD" };
+            List<List<string>> expected = new List<List<string>>(){
+                new List<string>(){"AA","BB" },
+                new List<string>(){"BB","CC" },
+                new List<string>(){"CC","DD" } }
+            ;
+
+            Assert.Equal(expected, list.EachCons(2));
+        }
+
+        [Fact]
+        public void ShoulReturnFormattedStringBrokenByPairsFromList()
+        {
+            List<string> list = new List<string>() { "Abraham", "Isaac", "Jacob" };
+            Func<List<string>, string> Begot = (ancestry) =>
+            {
+                return String.Format("{0} begot {1}", ancestry[0], ancestry[1]);
+            };
+
+            string expected = "Abraham begot Isaac" + "\r\n" + "Isaac begot Jacob";
+
+            Assert.Equal(expected, list.EachCons(2).Map(Begot).Join("\r\n"));
+        }
+
+        [Fact]
+        public void ShouldReturnAListWithNoBlankElements()
+        {
+            List<string> inList = new List<string>(new string[] { "", "a", "", "b", "", "", "c", "" });
+            List<string> expected = new List<string>(new string[] { "a", "b", "c" });
+
+            Assert.Equal(expected, inList.Compact());
+
+        }
     }
 }
