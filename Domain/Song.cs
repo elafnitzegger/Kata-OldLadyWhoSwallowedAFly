@@ -10,14 +10,14 @@ namespace Domain
     {
         public static List<Critter> critters = new List<Critter>
         {
-            new Critter {Name = "horse", Epithet = ""},
-            new Critter {Name = "cow", Epithet = ""},
-            new Critter {Name = "goat", Epithet = ""},
-            new Critter {Name = "dog", Epithet = ""},
-            new Critter {Name = "cat", Epithet = ""},
-            new Critter {Name = "bird", Epithet = ""},
-            new Critter {Name = "spider", Epithet = "that wriggled and jiggled and tickled inside her"},
-            new Critter {Name = "fly", Epithet = ""}
+            new Critter {Name = "horse", Aside = ""},
+            new Critter {Name = "cow", Aside = "I don't know how she swallowed a cow!"},
+            new Critter {Name = "goat", Aside = "She just opened her throat and swallowed a goat!"},
+            new Critter {Name = "dog", Aside = "What a hog, to swallow a dog!"},
+            new Critter {Name = "cat", Aside = "Imagine that! She swallowed a cat!"},
+            new Critter {Name = "bird", Aside = "How absurd to swallow a bird!"},
+            new Critter {Name = "spider", Epithet = "that wriggled and jiggled and tickled inside her", Aside = "It wriggled and jiggled and tickled inside her."},
+            new Critter {Name = "fly", Aside = ""}
         };
 
         public static Func<List<Critter>, string> Motivation = (pair) =>
@@ -41,48 +41,16 @@ namespace Domain
                     return
                         string.Format("There was an old lady who swallowed a {0}.\r\n", critters.Last(i).First().Name) +
                         string.Format("{0}\r\n", "I don't know why she swallowed a fly. Perhaps she'll die!");
-                case 2:
-                    return
-                        string.Format("There was an old lady who swallowed a {0}.\r\n", critters.Last(i).First().Name) +
-                        string.Format("{0}\r\n", "It wriggled and jiggled and tickled inside her.") +
-                        string.Format("{0}\r\n", Chain(i)) +
-                        string.Format("{0}\r\n", "I don't know why she swallowed a fly. Perhaps she'll die!");
-                case 3:
-                    return
-                        string.Format("There was an old lady who swallowed a {0}.\r\n", critters.Last(i).First().Name) +
-                        string.Format("{0}\r\n", "How absurd to swallow a bird!") +
-                        string.Format("{0}\r\n", Chain(i)) +
-                        string.Format("{0}\r\n", "I don't know why she swallowed a fly. Perhaps she'll die!");
-                case 4:
-                    return 
-                        string.Format("There was an old lady who swallowed a {0}.\r\n", critters.Last(i).First().Name) +
-                        string.Format("{0}\r\n", "Imagine that! She swallowed a cat!") +
-                        string.Format("{0}\r\n", Chain(i)) +
-                        string.Format("{0}\r\n", "I don't know why she swallowed a fly. Perhaps she'll die!");
-                case 5:
-                    return
-                        string.Format("There was an old lady who swallowed a {0}.\r\n", critters.Last(i).First().Name) +
-                        string.Format("{0}\r\n", "What a hog, to swallow a dog!") +
-                        string.Format("{0}\r\n", Chain(i)) +
-                        string.Format("{0}\r\n", "I don't know why she swallowed a fly. Perhaps she'll die!");
-                case 6:
-                    return
-                        string.Format("There was an old lady who swallowed a {0}.\r\n", critters.Last(i).First().Name) +
-                        string.Format("{0}\r\n", "She just opened her throat and swallowed a goat!") +
-                        string.Format("{0}\r\n", Chain(i)) +
-                        string.Format("{0}\r\n", "I don't know why she swallowed a fly. Perhaps she'll die!");
-                case 7:
-                    return
-                        string.Format("There was an old lady who swallowed a {0}.\r\n", critters.Last(i).First().Name) +
-                        string.Format("{0}\r\n", "I don't know how she swallowed a cow!") +
-                        string.Format("{0}\r\n", Chain(i)) +
-                        string.Format("{0}\r\n", "I don't know why she swallowed a fly. Perhaps she'll die!");
                 case 8:
                     return
                         string.Format("There was an old lady who swallowed a {0}.\r\n", critters.Last(i).First().Name) +
                         string.Format("{0}\r\n", "She died, of course!");
                 default:
-                    return "";
+                    return
+                        string.Format("There was an old lady who swallowed a {0}.\r\n", critters.Last(i).First().Name) +
+                        string.Format("{0}\r\n", critters.Last(i).First().Aside) +
+                        string.Format("{0}\r\n", Chain(i)) +
+                        string.Format("{0}\r\n", "I don't know why she swallowed a fly. Perhaps she'll die!");
             };
         };
 

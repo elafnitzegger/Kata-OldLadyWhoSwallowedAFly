@@ -17,5 +17,7 @@ namespace Domain
         {
             get { return new List<string> { Name, Epithet }.Compact().Join(" "); }
         }
+
+        public string Aside { get; set; }
     }
 }
