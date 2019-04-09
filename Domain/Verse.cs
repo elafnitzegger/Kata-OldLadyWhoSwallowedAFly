@@ -15,11 +15,9 @@ namespace Domain
             Critters = inCritters;
         }
 
-        public string ToString()
+        public new string ToString()
         {
-            int i = Critters.Count;
-
-            switch (i)
+            switch (Critters.Count)
             {
                 case 1:
                 case 8:
@@ -30,12 +28,12 @@ namespace Domain
                     return
                         string.Format("There was an old lady who swallowed a {0}.\r\n", Critters.First().Name) +
                         string.Format("{0}\r\n", Critters.First().Aside) +
-                        string.Format("{0}\r\n", Chain(i)) +
+                        string.Format("{0}\r\n", Chain()) +
                         string.Format("{0}\r\n", "I don't know why she swallowed a fly. Perhaps she'll die!");
             };
         }
 
-        private string Chain(int i)
+        private string Chain()
         {
             return Critters.EachCons(2).Map(Motivation).Join("\r\n");
         }
