@@ -43,8 +43,11 @@
   <ItemGroup>
     <Compile Include="Critter.cs" />
     <Compile Include="Helpers.cs" />
+    <Compile Include="IVerse.cs" />
+    <Compile Include="LongVerse.cs" />
     <Compile Include="Song.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShortVerse.cs" />
     <Compile Include="Verse.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

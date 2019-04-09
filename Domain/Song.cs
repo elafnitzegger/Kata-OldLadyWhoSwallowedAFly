@@ -31,7 +31,7 @@ namespace Domain
 
         public static Func<string> Lyrics = () =>
         {
-            return Enumerable.Range(1, critters.Count).ToList().Map(i => new Verse(critters.Last(i)).ToString()).Join("\r\n");
+            return Enumerable.Range(1, critters.Count).ToList().Map(i => Verse.For(critters, i).ToString()).Join("\r\n");
         };
     }
 }
