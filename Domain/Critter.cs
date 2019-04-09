@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-
+using System.Text.RegularExpressions;
 
 namespace Domain
 {
@@ -15,5 +15,13 @@ namespace Domain
         }
 
         public string Aside { get; set; }
+
+        public string Article
+        {
+            get {
+                if (Regex.Match(Name[0].ToString(), "[aeiouAEIOU]").Success) { return "an"; }
+                else { return "a"; }
+            }
+        }
     }
 }

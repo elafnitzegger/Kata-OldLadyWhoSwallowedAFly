@@ -21,7 +21,7 @@ namespace Domain
 
         private string Incident()
         {
-            return string.Format("There was an old lady who swallowed a {0}.\r\n{1}\r\n", Critter.Name, Critter.Aside);
+            return string.Format("There was an old lady who swallowed {0} {1}.\r\n{2}\r\n",Critter.Article, Critter.Name, Critter.Aside);
 
         }
 

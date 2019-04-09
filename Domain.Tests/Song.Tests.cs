@@ -74,7 +74,7 @@ She died, of course!
                 new List<string>{"A",null,"IDK why A."},
             };
 
-            string @expected = @"There was an old lady who swallowed a A.
+            string @expected = @"There was an old lady who swallowed an A.
 IDK why A.
 
 There was an old lady who swallowed a B.
