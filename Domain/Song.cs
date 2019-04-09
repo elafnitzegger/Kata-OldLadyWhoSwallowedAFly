@@ -7,10 +7,10 @@ namespace Domain
     public class Song
     {
         private static List<Critter> critters;
-  
-        private static List<List<string>> Data = new List<List<string>>
+
+        private static List<List<string>> originalSongData = new List<List<string>>
         {
-            new List<string>{"horse",null, "She died, of course!" },
+            new List<string>{ "horse",null, "She died, of course!" },
             new List<string>{ "cow", null, "I don't know how she swallowed a cow!" },
             new List<string>{ "goat", null, "She just opened her throat and swallowed a goat!" },
             new List<string>{ "dog", null, "What a hog, to swallow a dog!" },
@@ -22,10 +22,11 @@ namespace Domain
 
         public static void Initialize()
         {
-            Initialize(Data);
+            Initialize(originalSongData);
         }
- 
-        public static void Initialize(List<List<string>> data) {
+
+        public static void Initialize(List<List<string>> data)
+        {
             critters = Enumerable.Range(0, data.Count).ToList().Map(i => new Critter { Name = data[i][0], Epithet = data[i][1], Aside = data[i][2] });
         }
 

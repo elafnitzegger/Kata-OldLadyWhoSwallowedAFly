@@ -21,14 +21,11 @@ namespace Domain
 
         private string Chain()
         {
-            return Critters.EachCons(2).Map(Motivation).Join("\r\n");
+            return Critters.EachCons(2).Map(pair => Motivation(pair[0], pair[1])).Join("\r\n");
         }
 
-        private string Motivation(List<Critter> pair)
+        private string Motivation(Critter preditor, Critter prey)
         {
-            Critter preditor = pair[0];
-            Critter prey = pair[1];
-
             return string.Format("She swallowed the {0} to catch the {1}.", preditor.Name, prey.EmbellishedName);
         }
 
