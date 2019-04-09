@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using System.Collections.Generic;
+using Xunit;
 
 namespace Domain.Tests
 {
@@ -62,6 +63,37 @@ She died, of course!
             Assert.Equal(expected, Song.Lyrics());
         }
 
+        [Fact]
+        public void ShouldReturnNewSong()
+        {
+            List<List<string>> newSongData = new List<List<string>>
+            {
+                new List<string>{"D",null,"Nope."},
+                new List<string>{"C",null,"ZOMG C!"},
+                new List<string>{"B","that blah blah","Squee, B!"},
+                new List<string>{"A",null,"IDK why A."},
+            };
+
+            string @expected = @"There was an old lady who swallowed a A.
+IDK why A.
+
+There was an old lady who swallowed a B.
+Squee, B!
+She swallowed the B to catch the A.
+IDK why A.
+
+There was an old lady who swallowed a C.
+ZOMG C!
+She swallowed the C to catch the B that blah blah.
+She swallowed the B to catch the A.
+IDK why A.
+
+There was an old lady who swallowed a D.
+Nope.
+";
+            Song.Initialize(newSongData);
+            Assert.Equal(expected, Song.Lyrics());
+        }
     }
 
 }
