@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain
 {
     public class Verse
     {
         public List<Critter> Critters { get; set; }
+        private Critter Critter { get; set; }
 
         public Verse(List<Critter> inCritters)
         {
             Critters = inCritters;
+            Critter = inCritters.First();
         }
 
         public new string ToString()
@@ -24,7 +23,7 @@ namespace Domain
 
         private string Incident()
         {
-            return string.Format("There was an old lady who swallowed a {0}.\r\n{1}\r\n", Critters.First().Name, Critters.First().Aside);
+            return string.Format("There was an old lady who swallowed a {0}.\r\n{1}\r\n", Critter.Name, Critter.Aside);
 
         }
  
@@ -38,7 +37,7 @@ namespace Domain
                 default:
                     return
                         string.Format("{0}\r\n", Chain()) +
-                        string.Format("{0}\r\n", "I don't know why she swallowed a fly. Perhaps she'll die!");
+                        string.Format("{0}\r\n", Critters.Last().Aside);
             };
         }
 

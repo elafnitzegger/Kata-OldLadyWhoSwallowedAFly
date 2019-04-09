@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Xunit;
+﻿using Xunit;
 
 namespace Domain.Tests
 {
@@ -60,7 +58,7 @@ I don't know why she swallowed a fly. Perhaps she'll die!
 There was an old lady who swallowed a horse.
 She died, of course!
 ";
-
+            Song.Initialize();
             Assert.Equal(expected, Song.Lyrics());
         }
 
