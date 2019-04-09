@@ -17,17 +17,26 @@ namespace Domain
 
         public new string ToString()
         {
+            return
+                Incident() +
+                Recap();
+        }
+
+        private string Incident()
+        {
+            return string.Format("There was an old lady who swallowed a {0}.\r\n{1}\r\n", Critters.First().Name, Critters.First().Aside);
+
+        }
+ 
+        private string Recap()
+        {
             switch (Critters.Count)
             {
                 case 1:
                 case 8:
-                    return
-                        string.Format("There was an old lady who swallowed a {0}.\r\n", Critters.First().Name) +
-                        string.Format("{0}\r\n", Critters.First().Aside);
+                    return "";
                 default:
                     return
-                        string.Format("There was an old lady who swallowed a {0}.\r\n", Critters.First().Name) +
-                        string.Format("{0}\r\n", Critters.First().Aside) +
                         string.Format("{0}\r\n", Chain()) +
                         string.Format("{0}\r\n", "I don't know why she swallowed a fly. Perhaps she'll die!");
             };
