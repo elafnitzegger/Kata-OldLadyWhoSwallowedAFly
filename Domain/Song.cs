@@ -20,40 +20,10 @@ namespace Domain
             new Critter {Name = "fly", Aside = "I don't know why she swallowed a fly. Perhaps she'll die!"}
         };
 
-        public static Func<List<Critter>, string> Motivation = (pair) =>
-        {
-            Critter preditor = pair[0];
-            Critter prey = pair[1];
-
-            return string.Format("She swallowed the {0} to catch the {1}.", preditor.Name, prey.EmbellishedName);
-        };
-
-        public static Func<int, string> Chain = (i) =>
-        {
-            return critters.Last(i).EachCons(2).Map(Motivation).Join("\r\n");
-        };
-
-        public static Func<int, string> Verse = (i) =>
-        {
-            switch (i)
-            {
-                case 1:
-                case 8:
-                    return
-                        string.Format("There was an old lady who swallowed a {0}.\r\n", critters.Last(i).First().Name) +
-                        string.Format("{0}\r\n", critters.Last(i).First().Aside);
-                default:
-                    return
-                        string.Format("There was an old lady who swallowed a {0}.\r\n", critters.Last(i).First().Name) +
-                        string.Format("{0}\r\n", critters.Last(i).First().Aside) +
-                        string.Format("{0}\r\n", Chain(i)) +
-                        string.Format("{0}\r\n", "I don't know why she swallowed a fly. Perhaps she'll die!");
-            };
-        };
 
         public static Func<string> Lyrics = () =>
         {
-            return Enumerable.Range(1, 8).ToList().Map(Verse).Join("\r\n");
+            return Enumerable.Range(1, 8).ToList().Map(i => new Verse(critters.Last(i)).ToString()).Join("\r\n");
         };
     }
 }

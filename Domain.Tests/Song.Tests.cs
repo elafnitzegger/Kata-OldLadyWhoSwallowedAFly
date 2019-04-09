@@ -64,28 +64,6 @@ She died, of course!
             Assert.Equal(expected, Song.Lyrics());
         }
 
-        [Fact]
-        public void ShouldProvideMotivationString()
-        {
-            var expected = "She swallowed the A to catch the B.";
-
-            List<Critter> pair = new List<Critter>{
-                new Critter {Name = "A", Epithet = "" },
-                new Critter {Name = "B", Epithet = "" }
-            };
-
-            Assert.Equal(expected, Song.Motivation(pair));
-        }
-
-        [Fact]
-        public void ShouldReturnListOfPreditorsAndPrey()
-        {
-
-            string expected = "She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\r\n" +
-                "She swallowed the spider to catch the fly.";
-
-            Assert.Equal(expected, Song.Chain(3));
-        }
     }
 
 }
